@@ -11,7 +11,7 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "09:00"
-      timzone: "Asia/Calcutta"
+      timezone: "Asia/Calcutta"
     commit-message:
       prefix: "Golang"
       include: "scope"
