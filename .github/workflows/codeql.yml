@@ -23,7 +23,7 @@ jobs:
       matrix:
         include:
           - language: 'go'
-            build-mode: 'automatic'  # Set default build mode to 'automatic' for Go
+            build-mode: 'autobuild'  # Set default build mode to 'autobuild' for Go
 
     steps:
     - name: Checkout repository
