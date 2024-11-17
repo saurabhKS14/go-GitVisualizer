@@ -28,7 +28,7 @@
 2. Navigate to the project directory:
 
    ```bash
-   cd git-visualizer
+   cd go-GitVisualizer
    ```
 
 3. Install dependencies:
@@ -46,7 +46,7 @@
 5. Run the CLI tool:
 
    ```bash
-   ./git-visualizer
+   ./gitviz
    ```
 
 ## Usage
