@@ -46,7 +46,7 @@
 5. Run the CLI tool:
 
    ```bash
-   ./git-visualizer
+   ./gitviz
    ```
 
 ## Usage
@@ -55,76 +55,16 @@
 
 - **Visualize Branches**
 
-  To list all branches in your Git repository:
+  To list all branches in your Git repository and highlight current branch:
 
   ```bash
-  git-visualizer branches
+  gitviz .
   ```
-
-- **Commit Heatmap**
-
-  To visualize the commit heatmap for the past week, month, or year, use:
-
-  ```bash
-  git-visualizer heatmap --range <week|month|year>
-  ```
-
-  This will generate a simple text-based heatmap showing commit density.
-
-- **Contributor Statistics**
-
-  To view top contributors for a given time range:
-
-  ```bash
-  git-visualizer contributors --range <week|month>
-  ```
-
-  This will display the top contributors and their respective commit counts.
-
-- **Export Data**
-
-  To export the commit heatmap to a CSV or JSON file:
-
-  ```bash
-  git-visualizer export --type <heatmap|contributors> --format <csv|json> --output <filename>
-  ```
-
-### Example Commands
-
-- View a weekly commit heatmap:
-
-  ```bash
-  git-visualizer heatmap --range week
-  ```
-
-- List contributors for the last month:
-
-  ```bash
-  git-visualizer contributors --range month
-  ```
-
-- Export contributor stats to a CSV file:
-
-  ```bash
-  git-visualizer export --type contributors --format csv --output contributors.csv
-  ```
-
-## Interactive Mode
-
-- **Navigate the Heatmap**: Use the arrow keys to move through different time ranges (weeks/months).
-- **View Contributor Stats**: After generating stats, use arrow keys to scroll through the contributors.
 
 ## Development
 
 If you'd like to contribute or learn more about how this project is built, check out the development section.
 
-### Running Tests
-
-To ensure that everything is working as expected, run the tests:
-
-```bash
-go test ./...
-```
 
 ### Building the Project
 
