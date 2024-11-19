@@ -30,26 +30,30 @@ to help developers understand their Git history and collaboration trends.`,
 		if err != nil {
 			log.Fatalf("This is not a git repository : %v", err)
 		}
-		if args[0] == "." {
-			branches, err := repo.Branches()
-			if err != nil {
-				log.Fatalf("Failed to get the HEAD : %v", err)
-			}
-			err = branches.ForEach(func(ref *plumbing.Reference) error {
-				currentBranch, _ := repo.Head()
-				if currentBranch.Name().Short() == ref.Name().Short() {
-					fmt.Println("* " + Constants.Green + ref.Name().Short() + Constants.Reset)
-				} else {
-					fmt.Println("  " + ref.Name().Short())
+		if len(args) > 0 {
+			if args[0] == "." {
+				branches, err := repo.Branches()
+				if err != nil {
+					log.Fatalf("Failed to get the HEAD : %v", err)
 				}
-				return nil
-			})
+				err = branches.ForEach(func(ref *plumbing.Reference) error {
+					currentBranch, _ := repo.Head()
+					if currentBranch.Name().Short() == ref.Name().Short() {
+						fmt.Println("* " + Constants.Green + ref.Name().Short() + Constants.Reset)
+					} else {
+						fmt.Println("  " + ref.Name().Short())
+					}
+					return nil
+				})
 
-			if err != nil {
-				log.Fatalf("Error Iterating over the branches : %v", err)
+				if err != nil {
+					log.Fatalf("Error Iterating over the branches : %v", err)
+				}
+			} else {
+				cmd.Help()
 			}
 		} else {
-			fmt.Println("This is a normal command")
+			cmd.Help()
 		}
 	},
 }
