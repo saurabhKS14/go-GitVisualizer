@@ -5,10 +5,12 @@ package cmd
 
 import (
 	"fmt"
+	Constants "gitviz/Utils"
 	"log"
 	"os"
 
 	"github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/spf13/cobra"
 )
 
@@ -29,11 +31,23 @@ to help developers understand their Git history and collaboration trends.`,
 			log.Fatalf("This is not a git repository : %v", err)
 		}
 		if args[0] == "." {
-			branch, err := repo.Head()
+			branches, err := repo.Branches()
 			if err != nil {
 				log.Fatalf("Failed to get the HEAD : %v", err)
 			}
-			fmt.Println(branch.Name().Short())
+			err = branches.ForEach(func(ref *plumbing.Reference) error {
+				currentBranch, _ := repo.Head()
+				if currentBranch.Name().Short() == ref.Name().Short() {
+					fmt.Println("* " + Constants.Green + ref.Name().Short() + Constants.Reset)
+				} else {
+					fmt.Println("  " + ref.Name().Short())
+				}
+				return nil
+			})
+
+			if err != nil {
+				log.Fatalf("Error Iterating over the branches : %v", err)
+			}
 		} else {
 			fmt.Println("This is a normal command")
 		}
