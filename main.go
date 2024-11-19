@@ -1,18 +1,11 @@
+/*
+Copyright © 2024 NAME HERE <EMAIL ADDRESS>
+
+*/
 package main
 
-import (
-	"fmt"
-	"log"
-
-	"github.com/go-git/go-git/v5"
-)
+import "gitviz/cmd"
 
 func main() {
-	_, err := git.PlainOpen(".")
-
-	if err != nil {
-		log.Fatalf("This is not a github repository" + err.Error())
-	}
-
-	fmt.Println("Done")
+	cmd.Execute()
 }
